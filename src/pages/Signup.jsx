@@ -63,7 +63,7 @@ export default function () {
 
                   <div class="d-grid mb-2">
                     <button
-                      class="btn btn-lg btn-google btn-login fw-bold text-uppercase"
+                      class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                       type="submit"
                     >
                       <i class="fab fa-google me-2"></i> Sign up with Google

@@ -40,11 +40,11 @@ a:hover {
 .btn {
   border: none;
 }
-.btn-google {
+.btn-secondary {
   color: white !important;
   background-color: #3d5af1;
 }
-.btn-google:hover {
+.btn-secondary:hover {
   background-color: rgba(61, 90, 241, 0.76);
 }
 
@@ -69,4 +69,19 @@ a:hover {
   font-size: 15px;
   line-height: 16px;
   color: rgba(14, 21, 58, 0.47);
+}
+
+.greeting-title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 80px;
+
+  color: #0e153a;
+}
+.greeting-passive {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 40px;
+
+  color: #8e91a2;
 }
