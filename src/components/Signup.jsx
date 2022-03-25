@@ -59,7 +59,7 @@ export default function () {
                     Have an account? Sign In
                   </a>
 
-                  <hr className="my-4" />
+                  <hr className="my-3" />
 
                   <div class="d-grid mb-2">
                     <button

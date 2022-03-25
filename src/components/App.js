@@ -5,8 +5,8 @@ import Signup from "./Signup";
 function App() {
   return (
     <div className="App">
-      {/* <Signup /> */}
-      <Login />
+      <Signup />
+      {/* <Login /> */}
     </div>
   );
 }
