@@ -14,47 +14,47 @@ export default function () {
                   Welcome, please enter your details!
                 </p>
                 <form>
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInputEmail"
                       placeholder="name@example.com"
                     />
-                    <label for="floatingInputEmail">Email address</label>
+                    <label htmlFor="floatingInputEmail">Email address</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="floatingPassword"
                       placeholder="Password"
                     />
-                    <label for="floatingPassword">Password</label>
+                    <label htmlFor="floatingPassword">Password</label>
                   </div>
 
-                  <div class="d-grid mb-2">
+                  <div className="d-grid mb-2">
                     <button
-                      class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                      className="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
                       type="submit"
                     >
                       Sing In
                     </button>
                   </div>
 
-                  <a class="d-block small text-end mt-3" href="#">
+                  <a className="d-block small text-end mt-3" href="#">
                     Forgot password?
                   </a>
 
                   <hr className="my-3" />
 
-                  <div class="d-grid mb-2">
+                  <div className="d-grid mb-2">
                     <button
-                      class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
+                      className="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                       type="submit"
                     >
-                      <i class="fab fa-google me-2"></i> Sign up with Google
+                      <i className="fab fa-google me-2"></i> Sign up with Google
                     </button>
                   </div>
                 </form>
