@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function () {
   return (
     <>
@@ -60,9 +60,7 @@ export default function () {
                 </form>
                 <p className="p-passive mt-4">
                   Dont have an account?{" "}
-                  <a class="" href="#">
-                    Sign up for free
-                  </a>
+                  <Link to="/singup">Sign up for free</Link>
                 </p>
               </div>
             </div>
