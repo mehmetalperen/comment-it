@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Greeting() {
   return (
     <div className="container">
@@ -28,20 +28,20 @@ export default function Greeting() {
               </ul>
               <div className="d-flex w-100">
                 <div class="d-grid mb-2 mx-2 w-50">
-                  <button
+                  <Link
                     class="btn btn-primary btn-login fw-bold text-uppercase"
-                    type="submit"
+                    to="/singup"
                   >
                     Sing Up
-                  </button>
+                  </Link>
                 </div>
                 <div class="d-grid mb-2 mx-2 w-50">
-                  <button
+                  <Link
+                    to="/singin"
                     class="btn btn-secondary btn-login fw-bold text-uppercase"
-                    type="submit"
                   >
                     Sing In
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

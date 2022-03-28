@@ -39,7 +39,7 @@ export default function () {
                       class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
                       type="submit"
                     >
-                      Sing Up
+                      Sing In
                     </button>
                   </div>
 

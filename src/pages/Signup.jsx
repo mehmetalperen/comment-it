@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function () {
   return (
@@ -55,9 +56,9 @@ export default function () {
                     </button>
                   </div>
 
-                  <a class="d-block text-center mt-2 small" href="#">
+                  <Link class="d-block text-center mt-2 small" to="/singin">
                     Have an account? Sign In
-                  </a>
+                  </Link>
 
                   <hr className="my-3" />
 
