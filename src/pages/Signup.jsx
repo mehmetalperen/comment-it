@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export default function () {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmationRef = useRef();
+
   return (
     <>
       <div className="container">
@@ -19,30 +24,33 @@ export default function () {
                     <input
                       type="email"
                       className="form-control"
-                      id="floatingInputEmail"
+                      id="email"
                       placeholder="name@example.com"
+                      ref={emailRef}
                     />
-                    <label htmlFor="floatingInputEmail">Email address</label>
+                    <label htmlFor="email">Email address</label>
                   </div>
 
                   <div className="form-floating mb-3">
                     <input
                       type="password"
                       className="form-control"
-                      id="floatingPassword"
+                      id="password"
                       placeholder="Password"
+                      ref={passwordRef}
                     />
-                    <label htmlFor="floatingPassword">Password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
 
                   <div className="form-floating mb-3">
                     <input
                       type="password"
                       className="form-control"
-                      id="floatingPasswordConfirm"
+                      id="passwordConfirmation"
                       placeholder="Confirm Password"
+                      ref={passwordConfirmationRef}
                     />
-                    <label htmlFor="floatingPasswordConfirm">
+                    <label htmlFor="passwordConfirmation">
                       Confirm Password
                     </label>
                   </div>
