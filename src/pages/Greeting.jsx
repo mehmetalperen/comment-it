@@ -27,18 +27,18 @@ export default function Greeting() {
                 </li>
               </ul>
               <div className="d-flex w-100">
-                <div class="d-grid mb-2 mx-2 w-50">
+                <div className="d-grid mb-2 mx-2 w-50">
                   <Link
-                    class="btn btn-primary btn-login fw-bold text-uppercase"
+                    className="btn btn-primary btn-login fw-bold text-uppercase"
                     to="/singup"
                   >
                     Sing Up
                   </Link>
                 </div>
-                <div class="d-grid mb-2 mx-2 w-50">
+                <div className="d-grid mb-2 mx-2 w-50">
                   <Link
                     to="/singin"
-                    class="btn btn-secondary btn-login fw-bold text-uppercase"
+                    className="btn btn-secondary btn-login fw-bold text-uppercase"
                   >
                     Sing In
                   </Link>
