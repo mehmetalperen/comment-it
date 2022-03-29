@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
-export default function () {
+export default function() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmationRef.current.value) {
+      return setError("Passwords do not match.");
+    }
+    try {
+      setError("");
+      setIsLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch (err) {
+      console.log(err);
+      setError("Failled to create an account.");
+    }
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -16,10 +37,15 @@ export default function () {
               <div className="card-img-left d-none d-md-flex"></div>
               <div className="card-body p-4 ">
                 <h1 className="card-title ">Sign up</h1>
+                {error && (
+                  <div class="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
                 <p className="auth-greeting mb-4">
                   Welcome, Let’s get started!
                 </p>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-floating mb-3">
                     <input
                       type="email"
@@ -59,6 +85,7 @@ export default function () {
                     <button
                       className="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
                       type="submit"
+                      disabled={isLoading}
                     >
                       Sing Up
                     </button>
