@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-export default function () {
+import { useRef } from "react";
+import { useAuth } from "../contexts/AuthContext";
+
+export default function() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setIsLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch (err) {
+      setError("Failled to create an account.");
+    }
+    setIsLoading(false);
+  };
+
   return (
     <>
       <div className="container">
@@ -10,58 +33,67 @@ export default function () {
               <div className="card-img-left d-none d-md-flex"></div>
               <div className="card-body p-4 ">
                 <h1 className="card-title ">Login</h1>
+                {error && (
+                  <div class="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
                 <p className="auth-greeting mb-4">
                   Welcome, please enter your details!
                 </p>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-floating mb-3">
                     <input
                       type="email"
                       className="form-control"
-                      id="floatingInputEmail"
+                      id="email"
                       placeholder="name@example.com"
+                      ref={emailRef}
                     />
-                    <label htmlFor="floatingInputEmail">Email address</label>
+                    <label htmlFor="email">Email address</label>
                   </div>
 
                   <div className="form-floating mb-3">
                     <input
                       type="password"
                       className="form-control"
-                      id="floatingPassword"
+                      id="password"
                       placeholder="Password"
+                      ref={passwordRef}
                     />
-                    <label htmlFor="floatingPassword">Password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
 
                   <div className="d-grid mb-2">
                     <button
                       className="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
                       type="submit"
+                      disabled={isLoading}
                     >
                       Sing In
                     </button>
                   </div>
 
-                  <a className="d-block small text-end mt-3" href="#">
+                  <a className="d-block small text-end my-3" href="#">
                     Forgot password?
                   </a>
-
-                  <hr className="my-3" />
 
                   <div className="d-grid mb-2">
                     <button
                       className="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                       type="submit"
                     >
-                      <i className="fab fa-google me-2"></i> Sign up with Google
+                      <i className="fab fa-google me-2"></i> Sign in with Google
                     </button>
                   </div>
+                  <hr />
+                  <p className="d-block text-center mt-2">
+                    Need an account?{" "}
+                    <Link className=" small" to="/singup">
+                      Sign Up
+                    </Link>
+                  </p>
                 </form>
-                <p className="p-passive mt-4">
-                  Dont have an account?{" "}
-                  <Link to="/singup">Sign up for free</Link>
-                </p>
               </div>
             </div>
           </div>

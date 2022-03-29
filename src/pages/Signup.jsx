@@ -90,12 +90,6 @@ export default function() {
                     </button>
                   </div>
 
-                  <Link className="d-block text-center mt-2 small" to="/singin">
-                    Have an account? Sign In
-                  </Link>
-
-                  <hr className="my-3" />
-
                   <div className="d-grid mb-2">
                     <button
                       className="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
@@ -104,6 +98,13 @@ export default function() {
                       <i className="fab fa-google me-2"></i> Sign up with Google
                     </button>
                   </div>
+                  <hr className="my-3" />
+                  <p className="d-block text-center mt-2">
+                    Already have an acoount?{" "}
+                    <Link className=" small" to="/singin">
+                      Sign In
+                    </Link>
+                  </p>
                 </form>
               </div>
             </div>
