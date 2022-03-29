@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const { login } = useAuth();
   const [error, setError] = useState("");
@@ -18,6 +19,7 @@ export default function() {
       setError("");
       setIsLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch (err) {
       setError("Failled to login.");
     }
