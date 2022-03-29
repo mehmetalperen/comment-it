@@ -19,7 +19,7 @@ export default function() {
       setError("");
       setIsLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      navigate("/");
+      navigate("/comments");
     } catch (err) {
       setError("Failled to login.");
     }
@@ -36,7 +36,7 @@ export default function() {
               <div className="card-body p-4 ">
                 <h1 className="card-title ">Login</h1>
                 {error && (
-                  <div class="alert alert-danger" role="alert">
+                  <div className="alert alert-danger" role="alert">
                     {error}
                   </div>
                 )}

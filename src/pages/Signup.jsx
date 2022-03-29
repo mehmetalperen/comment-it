@@ -38,7 +38,7 @@ export default function() {
               <div className="card-body p-4 ">
                 <h1 className="card-title ">Sign up</h1>
                 {error && (
-                  <div class="alert alert-danger" role="alert">
+                  <div className="alert alert-danger" role="alert">
                     {error}
                   </div>
                 )}
