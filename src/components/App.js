@@ -10,17 +10,17 @@ function App() {
   const [isNewUser, setIsNewUser] = useState(true);
 
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <div className="App">
           <Routes>
             <Route path="/" exact element={<Greeting />} />
             <Route path="/singup" element={<Signup />} />
             <Route path="/singin" element={<Login />} />
           </Routes>
-        </div>
-      </Router>
-    </AuthProvider>
+        </div>{" "}
+      </AuthProvider>
+    </Router>
   );
 }
 

@@ -9,7 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
-
+  const [isLoading, setIsLoading] = useState(true);
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubsribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setIsLoading(false); //we need this bc firebase is doing some work with localstorage: setting the current user, etc.
     });
     return unsubsribe;
   }, []);
@@ -26,5 +27,9 @@ export function AuthProvider({ children }) {
     signup,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!isLoading && children}
+    </AuthContext.Provider>
+  );
 }
