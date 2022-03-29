@@ -7,7 +7,7 @@ export default function() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,9 +17,9 @@ export default function() {
     try {
       setError("");
       setIsLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
     } catch (err) {
-      setError("Failled to create an account.");
+      setError("Failled to login.");
     }
     setIsLoading(false);
   };
