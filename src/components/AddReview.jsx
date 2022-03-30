@@ -1,5 +1,144 @@
 import React from "react";
 
 export default function AddReview() {
-  return <div>AddReview</div>;
+  return (
+    <>
+      <div className="row d-flex border">
+        <div className="col-4 d-flex justify-content-between border border-danger">
+          <div className=" mb-3">
+            <div className="row no-gutters">
+              <div className="col-md-4">
+                <img
+                  src="https://ui-avatars.com/api/?name=mehmet+nadi"
+                  alt="user profile image"
+                  className="rounded-circle"
+                />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <p className="username-text">Username</p>
+                  <p className="user-tot-reviews">12 Reviews</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-8 d-flex border border-success justify-content-center">
+          <div class="container d-flex justify-content-center ">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="start-card">
+                  <div class="start-card-body text-center">
+                    <fieldset class="rating">
+                      {" "}
+                      <input type="radio" id="star5" name="rating" value="5" />
+                      <label
+                        class="full"
+                        for="star5"
+                        title="Awesome - 5 stars"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        id="star4half"
+                        name="rating"
+                        value="4.5"
+                      />
+                      <label
+                        class="half"
+                        for="star4half"
+                        title="Pretty good - 4.5 stars"
+                      ></label>{" "}
+                      <input type="radio" id="star4" name="rating" value="4" />
+                      <label
+                        class="full"
+                        for="star4"
+                        title="Pretty good - 4 stars"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        id="star3half"
+                        name="rating"
+                        value="3.5"
+                      />
+                      <label
+                        class="half"
+                        for="star3half"
+                        title="Meh - 3.5 stars"
+                      ></label>{" "}
+                      <input type="radio" id="star3" name="rating" value="3" />
+                      <label
+                        class="full"
+                        for="star3"
+                        title="Meh - 3 stars"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        id="star2half"
+                        name="rating"
+                        value="2.5"
+                      />
+                      <label
+                        class="half"
+                        for="star2half"
+                        title="Kinda bad - 2.5 stars"
+                      ></label>{" "}
+                      <input type="radio" id="star2" name="rating" value="2" />
+                      <label
+                        class="full"
+                        for="star2"
+                        title="Kinda bad - 2 stars"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        id="star1half"
+                        name="rating"
+                        value="1.5"
+                      />
+                      <label
+                        class="half"
+                        for="star1half"
+                        title="Meh - 1.5 stars"
+                      ></label>{" "}
+                      <input type="radio" id="star1" name="rating" value="1" />
+                      <label
+                        class="full"
+                        for="star1"
+                        title="Sucks big time - 1 star"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        id="starhalf"
+                        name="rating"
+                        value="0.5"
+                      />
+                      <label
+                        class="half"
+                        for="starhalf"
+                        title="Sucks big time - 0.5 stars"
+                      ></label>{" "}
+                      <input
+                        type="radio"
+                        class="reset-option"
+                        name="rating"
+                        value="reset"
+                      />{" "}
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
+
+/*
+$(document).ready(function(){
+
+$("input[type='radio']").click(function(){
+var sim = $("input[type='radio']:checked").val();
+//alert(sim);
+if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } }); });
+ */

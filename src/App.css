@@ -1,3 +1,5 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url(http://fonts.googleapis.com/css?family=Calibri:400, 300, 700);
 body,
 html {
   margin: 0;
@@ -93,4 +95,84 @@ a:hover {
   line-height: 40px;
 
   color: rgba(70, 80, 133, 0.47);
+}
+
+.username-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 0 4px 0;
+}
+
+.user-tot-reviews {
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 10px;
+  color: #8e91a2;
+  margin: 0;
+}
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
+.rating {
+  border: none;
+  margin-right: 49px;
+}
+
+.myratings {
+  font-size: 85px;
+  color: green;
+}
+
+.rating > [id^="star"] {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #c4c8e4;
+  float: right;
+}
+
+.rating > [id^="star"]:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #3d5af1;
+}
+
+.rating > [id^="star"]:checked + label:hover,
+.rating > [id^="star"]:checked ~ label:hover,
+.rating > label:hover ~ [id^="star"]:checked ~ label,
+.rating > [id^="star"]:checked ~ label:hover ~ label {
+  color: #3d5af1;
+}
+
+.reset-option {
+  display: none;
+}
+
+.reset-button {
+  margin: 6px 12px;
+  background-color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+
+.start-card {
+  display: flex;
+  width: 350px;
 }
