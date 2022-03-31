@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Collapse } from "react-bootstrap";
+import UserProfileCard from "./UserProfileCard";
 
 export default function AddReview() {
   const [showComment, setShowComment] = useState(false);
@@ -30,21 +31,7 @@ export default function AddReview() {
       <div className="row d-flex mb-3">
         <div className="col-4 d-flex justify-content-between">
           <div className=" mb-3">
-            <div className="row no-gutters">
-              <div className="col-md-4">
-                <img
-                  src="https://ui-avatars.com/api/?name=mehmet+nadi"
-                  alt="user profile image"
-                  className="rounded-circle"
-                />
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <p className="username-text">Username</p>
-                  <p className="user-tot-reviews">12 Reviews</p>
-                </div>
-              </div>
-            </div>
+            <UserProfileCard />
           </div>
         </div>
         <div className="col-8">
