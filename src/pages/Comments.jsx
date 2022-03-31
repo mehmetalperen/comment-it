@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddReview from "../components/AddReview";
+import CommentCard from "../components/CommentCard";
 
 export default function Comments() {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -55,6 +56,7 @@ export default function Comments() {
                   </>
                 )}
                 <AddReview />
+                <CommentCard />
               </div>
             </div>
           </div>
