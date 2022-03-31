@@ -27,7 +27,7 @@ export default function AddReview() {
   return (
     <>
       <hr />
-      <div className="row d-flex">
+      <div className="row d-flex mb-3">
         <div className="col-4 d-flex justify-content-between">
           <div className=" mb-3">
             <div className="row no-gutters">
