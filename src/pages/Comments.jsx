@@ -6,7 +6,7 @@ export default function Comments() {
   const [isEmpty, setIsEmpty] = useState(false);
   return (
     <>
-      <div className="container">
+      <div className="container my-5">
         <div className="row">
           <div className="col-lg-10  mx-auto">
             <div className="card flex-row border-0 shadow overflow">
@@ -56,6 +56,31 @@ export default function Comments() {
                   </>
                 )}
                 <AddReview />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
+                <CommentCard />
                 <CommentCard />
               </div>
             </div>

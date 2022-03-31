@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="App">
+        <div className="App py-5">
           <Routes>
             <Route path="/" exact element={<Greeting />} />
             <Route path="/singup" element={<Signup />} />
