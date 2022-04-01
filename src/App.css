@@ -20,6 +20,11 @@ html {
   overflow-y: auto;
 }
 
+.star-icon {
+  color: #001a72;
+  font-size: 11px !important;
+}
+
 a {
   color: #3d5af1;
   text-decoration: none;
