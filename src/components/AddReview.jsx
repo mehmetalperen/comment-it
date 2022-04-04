@@ -31,7 +31,7 @@ export default function AddReview() {
       <div className="row d-flex mb-3">
         <div className="col-4 d-flex justify-content-between">
           <div className=" mb-3">
-            <UserProfileCard />
+            <UserProfileCard fName={"User"} lName={"Info"} />
           </div>
         </div>
         <div className="col-8">

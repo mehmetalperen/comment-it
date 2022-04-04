@@ -30,19 +30,13 @@ const comments = [
     fName: "Nadi",
     lName: "Mehmet",
     starReview: 5,
-    comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-        nisi repellat similique blanditiis, hic debitis consectetur,
-        praesentium eius, minus distinctio harum officia corrupti obcaecati et
-        laudantium veniam ea minima.`,
+    comment: ``,
   },
   {
     fName: "Nadi",
     lName: "Alperen",
     starReview: 0.5,
-    comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-        nisi repellat similique blanditiis, hic debitis consectetur,
-        praesentium eius, minus distinctio harum officia corrupti obcaecati et
-        laudantium veniam ea minima.`,
+    comment: ``,
   },
   {
     fName: "Yusuf",
@@ -66,10 +60,7 @@ const comments = [
     fName: "Cihan",
     lName: "Nadi",
     starReview: 4.5,
-    comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-        nisi repellat similique blanditiis, hic debitis consectetur,
-        praesentium eius, minus distinctio harum officia corrupti obcaecati et
-        laudantium veniam ea minima.`,
+    comment: ``,
   },
   {
     fName: "Cemile",
@@ -93,19 +84,13 @@ const comments = [
     fName: "Cengiz",
     lName: "Nadi",
     starReview: 1,
-    comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-        nisi repellat similique blanditiis, hic debitis consectetur,
-        praesentium eius, minus distinctio harum officia corrupti obcaecati et
-        laudantium veniam ea minima.`,
+    comment: ``,
   },
   {
     fName: "Erdal",
     lName: "Nadi",
     starReview: 1.5,
-    comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-        nisi repellat similique blanditiis, hic debitis consectetur,
-        praesentium eius, minus distinctio harum officia corrupti obcaecati et
-        laudantium veniam ea minima.`,
+    comment: ``,
   },
   {
     fName: "Hilal",

@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddReview from "../components/AddReview";
 import CommentCard from "../components/CommentCard";
+import dummyComments from "../dummy/comments";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Comments() {
   const [isEmpty, setIsEmpty] = useState(false);
+  const [totReview, setTotReview] = useState(0);
+  const [totComment, setTotComment] = useState(0);
+
+  useEffect(() => {
+    setTotReview(dummyComments.length);
+    const comments = dummyComments.filter((comment) => comment.comment !== "");
+    setTotComment(comments.length);
+    setIsEmpty(dummyComments.length > 0 ? false : true);
+  }, []);
+
   return (
     <>
       <div className="container my-5">
@@ -27,7 +39,6 @@ export default function Comments() {
                         <p className="auth-greeting">No comment</p>
                       </div>
                     </div>
-                    <hr className="m-0" />
                   </>
                 ) : (
                   <>
@@ -35,9 +46,14 @@ export default function Comments() {
                       <div className="col-6 ">
                         <h4 className="text-secondary">All reviews</h4>
                         <div className="mr-5 pe-5 d-flex justify-content-between">
-                          <p className="auth-greeting">## review(s)</p>
+                          <p className="auth-greeting">
+                            {totReview} review
+                            {totReview > 0 ? "s" : ""}
+                          </p>
                           <p className="auth-greeting">||</p>
-                          <p className="auth-greeting">## comment(s)</p>
+                          <p className="auth-greeting">
+                            {totComment} comment{totComment > 0 ? "s" : ""}
+                          </p>
                         </div>
                       </div>
                       <div className="col-6 left-border">
@@ -56,32 +72,10 @@ export default function Comments() {
                   </>
                 )}
                 <AddReview />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
+                {dummyComments.map((comment) => {
+                  const id = uuidv4();
+                  return <CommentCard key={id} comment={comment} />;
+                })}
               </div>
             </div>
           </div>

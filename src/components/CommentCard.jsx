@@ -3,29 +3,34 @@ import UserProfileCard from "./UserProfileCard";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
-export default function CommentCard() {
+export default function CommentCard(props) {
+  const { fName, lName, starReview, comment } = props.comment;
+
+  const fullStar = Math.floor(starReview);
+  const halfStar = Math.round(starReview) - fullStar;
+  const emtyStar = 5 - (fullStar + halfStar);
+
   return (
     <>
       <div className="row d-flex mb-5">
         <hr />
         <div className="col-4 ">
-          <UserProfileCard />
+          <UserProfileCard fName={fName} lName={lName} />
           <div className="start-review-wrapper m-2">
             <p>
-              <StarIcon className="star-icon" />
-              <StarIcon className="star-icon" />
-              <StarIcon className="star-icon" />
-              <StarHalfIcon className="star-icon" />
-              <StarBorderIcon className="star-icon" />
+              {[...Array(fullStar)].map((x, i) => (
+                <StarIcon className="star-icon" key={i} />
+              ))}
+              {[...Array(halfStar)].map((x, i) => (
+                <StarHalfIcon className="star-icon" key={i} />
+              ))}
+              {[...Array(emtyStar)].map((x, i) => (
+                <StarBorderIcon className="star-icon" key={i} />
+              ))}
             </p>
           </div>
         </div>
-        <div className="comment-content">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
-          nisi repellat similique blanditiis, hic debitis consectetur,
-          praesentium eius, minus distinctio harum officia corrupti obcaecati et
-          laudantium veniam ea minima.
-        </div>
+        <div className="comment-content">{comment}</div>
       </div>
     </>
   );
