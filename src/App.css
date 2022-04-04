@@ -45,6 +45,9 @@ a:hover {
 .card {
   border-radius: 10px;
 }
+.form-control {
+  max-height: 50px;
+}
 .btn {
   border: none;
 }

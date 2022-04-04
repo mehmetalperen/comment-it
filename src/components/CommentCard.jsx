@@ -4,7 +4,7 @@ import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
 export default function CommentCard(props) {
-  const { fName, lName, starReview, comment } = props.comment;
+  const { username, starReview, comment } = props.comment;
 
   const fullStar = Math.floor(starReview);
   const halfStar = Math.round(starReview) - fullStar;
@@ -15,7 +15,7 @@ export default function CommentCard(props) {
       <div className="row d-flex mb-5">
         <hr />
         <div className="col-4 ">
-          <UserProfileCard fName={fName} lName={lName} />
+          <UserProfileCard username={username} />
           <div className="start-review-wrapper m-2">
             <p>
               {[...Array(fullStar)].map((x, i) => (

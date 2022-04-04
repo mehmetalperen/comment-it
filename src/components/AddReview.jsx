@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Collapse } from "react-bootstrap";
 import UserProfileCard from "./UserProfileCard";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function AddReview(props) {
   const [showComment, setShowComment] = useState(false);
   const [starReview, setStarReview] = useState(0);
   const [comment, setComment] = useState("");
+  const { currentUser } = useAuth();
+  const [username, setUsername] = useState(currentUser.displayName);
 
   const toggleHideComment = (bool = true) => {
     setShowComment(bool);
@@ -31,7 +34,7 @@ export default function AddReview(props) {
       <div className="row d-flex mb-3">
         <div className="col-4 d-flex justify-content-between">
           <div className=" mb-3">
-            <UserProfileCard fName={"User"} lName={"Info"} />
+            <UserProfileCard username={username} />
           </div>
         </div>
         <div className="col-8">

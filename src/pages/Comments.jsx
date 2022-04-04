@@ -3,17 +3,20 @@ import AddReview from "../components/AddReview";
 import CommentCard from "../components/CommentCard";
 import dummyComments from "../dummy/comments";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Comments() {
   const [isEmpty, setIsEmpty] = useState(false);
   const [totReview, setTotReview] = useState(0);
   const [totComment, setTotComment] = useState(0);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     setTotReview(dummyComments.length);
     const comments = dummyComments.filter((comment) => comment.comment !== "");
     setTotComment(comments.length);
     setIsEmpty(dummyComments.length > 0 ? false : true);
+    console.log(currentUser);
   }, []);
 
   const handleReviewSubmit = (review) => {

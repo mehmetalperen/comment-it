@@ -1,7 +1,6 @@
 const comments = [
   {
-    fName: "Mehmet",
-    lName: "Nadi",
+    username: "Mehmet Nadi",
     starReview: 4,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -9,8 +8,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Alperen",
-    lName: "Nadi",
+    username: "Alperen Nadi",
     starReview: 1.5,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -18,8 +16,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Nadi",
-    lName: "Nadi",
+    username: "Nadi Nadi",
     starReview: 4.5,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -27,20 +24,17 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Nadi",
-    lName: "Mehmet",
+    username: "Nadi Mehmet",
     starReview: 5,
     comment: ``,
   },
   {
-    fName: "Nadi",
-    lName: "Alperen",
+    username: "Nadi Alperen",
     starReview: 0.5,
     comment: ``,
   },
   {
-    fName: "Yusuf",
-    lName: "Nadi",
+    username: "Yusuf Nadi",
     starReview: 2.5,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -48,8 +42,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Nadi",
-    lName: "Yusuf",
+    username: "Nadi Yusuf",
     starReview: 3.4,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -57,14 +50,12 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Cihan",
-    lName: "Nadi",
+    username: "Cihan Nadi",
     starReview: 4.5,
     comment: ``,
   },
   {
-    fName: "Cemile",
-    lName: "Nadi",
+    username: "Cemile Nadi",
     starReview: 4,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -72,8 +63,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Huma",
-    lName: "Nadi",
+    username: "Huma Nadi",
     starReview: 2,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -81,20 +71,17 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Cengiz",
-    lName: "Nadi",
+    username: "Cengiz Nadi",
     starReview: 1,
     comment: ``,
   },
   {
-    fName: "Erdal",
-    lName: "Nadi",
+    username: "Erdal Nadi",
     starReview: 1.5,
     comment: ``,
   },
   {
-    fName: "Hilal",
-    lName: "Nadi",
+    username: "Hilal Nadi",
     starReview: 4,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -102,8 +89,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Hatice",
-    lName: "Nadi",
+    username: "Hatice Nadi",
     starReview: 4,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -111,8 +97,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Omer",
-    lName: "Nadi",
+    username: "Omer Nadi",
     starReview: 2.5,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,
@@ -120,8 +105,7 @@ const comments = [
         laudantium veniam ea minima.`,
   },
   {
-    fName: "Safiye",
-    lName: "Nadi",
+    username: "Safiye Nadi",
     starReview: 3,
     comment: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ut
         nisi repellat similique blanditiis, hic debitis consectetur,

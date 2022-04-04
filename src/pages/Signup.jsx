@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function() {
+  const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
@@ -20,7 +21,11 @@ export default function() {
     try {
       setError("");
       setIsLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(
+        emailRef.current.value,
+        passwordRef.current.value,
+        usernameRef.current.value
+      );
       navigate("/singin");
     } catch (err) {
       setError("Failled to create an account.");
@@ -46,6 +51,16 @@ export default function() {
                   Welcome, Let’s get started!
                 </p>
                 <form onSubmit={handleSubmit}>
+                  <div className="form-floating mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="username"
+                      placeholder="Username"
+                      ref={usernameRef}
+                    />
+                    <label htmlFor="username">Username</label>
+                  </div>
                   <div className="form-floating mb-3">
                     <input
                       type="email"
