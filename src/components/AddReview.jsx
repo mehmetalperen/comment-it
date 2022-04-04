@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Collapse } from "react-bootstrap";
 import UserProfileCard from "./UserProfileCard";
 
-export default function AddReview() {
+export default function AddReview(props) {
   const [showComment, setShowComment] = useState(false);
   const [starReview, setStarReview] = useState(0);
   const [comment, setComment] = useState("");
@@ -21,8 +21,8 @@ export default function AddReview() {
     toggleHideComment(false);
   };
 
-  const dummySubmit = () => {
-    console.log(`star: ${starReview} \n comment: ${comment}`);
+  const handleSubmit = () => {
+    props.handleReviewSubmit({ starReview: starReview, comment: comment });
     resetReview();
   };
   return (
@@ -233,7 +233,7 @@ export default function AddReview() {
                   </button>
                   <button
                     className="d-grid  mx-2 w-50 btn btn-secondary"
-                    onClick={dummySubmit}
+                    onClick={handleSubmit}
                   >
                     Submit
                   </button>

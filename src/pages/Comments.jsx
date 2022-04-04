@@ -16,6 +16,11 @@ export default function Comments() {
     setIsEmpty(dummyComments.length > 0 ? false : true);
   }, []);
 
+  const handleReviewSubmit = (review) => {
+    const { starReview, comment } = review;
+    console.log("review submitted!");
+    console.log(`star: ${starReview} \n comment: ${comment}`);
+  };
   return (
     <>
       <div className="container my-5">
@@ -71,7 +76,7 @@ export default function Comments() {
                     </div>
                   </>
                 )}
-                <AddReview />
+                <AddReview handleReviewSubmit={handleReviewSubmit} />
                 {dummyComments.map((comment) => {
                   const id = uuidv4();
                   return <CommentCard key={id} comment={comment} />;
