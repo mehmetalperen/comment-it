@@ -35,7 +35,6 @@ export default function() {
   };
 
   const handleSignInWithGoogle = async () => {
-    console.log("google btn clicked");
     try {
       await signInWithGoogle();
       navigate("/comments");
