@@ -8,11 +8,11 @@ export default function() {
   const passwordRef = useRef();
   const navigate = useNavigate();
 
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
@@ -25,7 +25,15 @@ export default function() {
     }
     setIsLoading(false);
   };
-
+  const handleSignInWithGoogle = async () => {
+    console.log("google btn clicked");
+    try {
+      await signInWithGoogle();
+      navigate("/comments");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="container">
@@ -43,7 +51,7 @@ export default function() {
                 <p className="auth-greeting mb-4">
                   Welcome, please enter your details!
                 </p>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLogin}>
                   <div className="form-floating mb-3">
                     <input
                       type="email"
@@ -79,23 +87,22 @@ export default function() {
                   <a className="d-block small text-end my-3" href="#">
                     Forgot password?
                   </a>
-
-                  <div className="d-grid mb-2">
-                    <button
-                      className="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
-                      type="submit"
-                    >
-                      <i className="fab fa-google me-2"></i> Sign in with Google
-                    </button>
-                  </div>
-                  <hr />
-                  <p className="d-block text-center mt-2">
-                    Need an account?{" "}
-                    <Link className=" small" to="/singup">
-                      Sign Up
-                    </Link>
-                  </p>
-                </form>
+                </form>{" "}
+                <div className="d-grid mb-2">
+                  <button
+                    className="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
+                    onClick={handleSignInWithGoogle}
+                  >
+                    <i className="fab fa-google me-2"></i> Sign in with Google
+                  </button>
+                </div>
+                <hr />
+                <p className="d-block text-center mt-2">
+                  Need an account?{" "}
+                  <Link className=" small" to="/singup">
+                    Sign Up
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
