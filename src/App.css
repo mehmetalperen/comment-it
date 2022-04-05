@@ -1,0 +1,182 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url(http://fonts.googleapis.com/css?family=Calibri:400, 300, 700);
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 800px;
+  height: 600px;
+  border-style: solid;
+  border-color: red;
+  border-width: 1px;
+  background-color: #e2f3f5;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.star-icon {
+  color: #001a72;
+  font-size: 11px !important;
+}
+
+a {
+  color: #3d5af1;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 16px;
+}
+a:hover {
+  color: rgba(61, 90, 241, 0.76);
+}
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+.form-control,
+.btn,
+.card {
+  border-radius: 10px;
+}
+.form-control {
+  max-height: 50px;
+}
+.btn {
+  border: none;
+}
+.btn-secondary {
+  color: white !important;
+  background-color: #3d5af1;
+}
+.btn-secondary:hover {
+  background-color: rgba(61, 90, 241, 0.76);
+}
+
+.btn-primary {
+  background-color: #0e153a;
+}
+
+.btn-primary:hover {
+  background-color: rgba(14, 21, 58, 0.76);
+}
+.text-primary {
+  color: #0e153a !important;
+}
+
+.text-secondary {
+  color: #3d5af1 !important;
+}
+.left-border {
+  border-left: 1px solid #8e91a2;
+}
+.auth-greeting {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+
+  color: rgba(14, 21, 58, 0.47);
+}
+
+.p-passive {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 16px;
+  color: rgba(14, 21, 58, 0.47);
+}
+
+.greeting-title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 80px;
+
+  color: #0e153a;
+}
+.greeting-passive {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 40px;
+
+  color: rgba(70, 80, 133, 0.47);
+}
+
+.username-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 0 4px 0;
+}
+
+.user-tot-reviews {
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 10px;
+  color: #8e91a2;
+  margin: 0;
+}
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
+.rating {
+  border: none;
+  margin-right: 49px;
+}
+
+.rating > [id^="star"] {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #c4c8e4;
+  float: right;
+}
+
+.rating > [id^="star"]:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #3d5af1;
+}
+
+.rating > [id^="star"]:checked + label:hover,
+.rating > [id^="star"]:checked ~ label:hover,
+.rating > label:hover ~ [id^="star"]:checked ~ label,
+.rating > [id^="star"]:checked ~ label:hover ~ label {
+  color: #3d5af1;
+}
+
+.reset-option {
+  display: none;
+}
+
+.reset-button {
+  margin: 6px 12px;
+  background-color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+
+.start-card {
+  display: flex;
+  width: 350px;
+}
