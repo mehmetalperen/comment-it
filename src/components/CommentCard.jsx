@@ -4,10 +4,9 @@ import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
 export default function CommentCard(props) {
-  const { user, starReview, comment } = props.comment;
-
-  const [username, setUsername] = useState("usernamehere");
-  const [commentText, setCommentText] = useState("commenthere");
+  const { user, starReview, comment } = props.reviewObj;
+  const [username, setUsername] = useState("");
+  const [commentText, setCommentText] = useState("");
   const [star, setStar] = useState(0);
 
   useEffect(() => {

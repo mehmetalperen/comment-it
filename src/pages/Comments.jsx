@@ -103,11 +103,11 @@ export default function Comments(props) {
                 )}
                 <AddReview handleReviewSubmit={handleReviewSubmit} />
                 {pageData.reviews
-                  ? pageData.reviews.map((comment, index) => {
+                  ? pageData.reviews.map((reviewObj, index) => {
                       const id = uuidv4();
                       if (index !== 0) {
                         //bc of firebase, the first review is always empty, so we don't wanna render it.
-                        return <CommentCard key={id} comment={comment} />;
+                        return <CommentCard key={id} reviewObj={reviewObj} />;
                       }
                     })
                   : null}
