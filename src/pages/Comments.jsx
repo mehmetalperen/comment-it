@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddReview from "../components/AddReview";
 import CommentCard from "../components/CommentCard";
-import dummyComments from "../dummy/comments";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
@@ -15,7 +14,6 @@ export default function Comments(props) {
   const [pageData, setPageData] = useState(0);
 
   useEffect(() => {
-    console.log(props.dataID);
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
     ref.on("value", (snapshot) => {
       setPageData(snapshot.val());
@@ -27,9 +25,7 @@ export default function Comments(props) {
   const handleReviewSubmit = (userReview) => {
     if (!pageData) return;
     const { starReview, comment } = userReview;
-    console.log(starReview);
-    console.log(comment);
-    console.log(pageData);
+
     const pageDataCopy = { ...pageData };
     pageDataCopy.reviews.push({
       starReview,
