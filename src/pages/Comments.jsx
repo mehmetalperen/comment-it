@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
 
+/*
+NEXT: 
+delete, and edit existing commment/review */
+
 export default function Comments(props) {
   // const [reviews, setReviews] = useState([]);//delete
   const [isEmpty, setIsEmpty] = useState(false); //modify this
