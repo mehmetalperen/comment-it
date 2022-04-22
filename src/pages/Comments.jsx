@@ -17,6 +17,7 @@ export default function Comments(props) {
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
     ref.on("value", (snapshot) => {
       setPageData(snapshot.val());
+      setIsEmpty(snapshot.val().reviews.length === 1 ? true : false);
     });
 
     return () => ref.off();
