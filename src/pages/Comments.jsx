@@ -12,12 +12,35 @@ export default function Comments(props) {
   const [totComment, setTotComment] = useState(0);
   const { currentUser } = useAuth();
   const [pageData, setPageData] = useState(0);
+  const [avgReview, setAvgReview] = useState(0);
 
   useEffect(() => {
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
     ref.on("value", (snapshot) => {
       setPageData(snapshot.val());
       setIsEmpty(snapshot.val().reviews.length === 1 ? true : false);
+      if (snapshot.val().reviews.length === 1) {
+        setTotReview(0);
+        setTotComment(0);
+      } else {
+        setTotReview(
+          snapshot.val().reviews.length - 1 /*There is always one empty review*/
+        );
+        let countComments = 0;
+        let reviewSum = 0;
+        snapshot.val().reviews.forEach((element) => {
+          if (element.comment && element.comment !== "") {
+            countComments++;
+          }
+          if (element.starReview) {
+            reviewSum += parseFloat(element.starReview);
+          }
+        });
+        setTotComment(countComments);
+        setAvgReview(
+          (reviewSum / (snapshot.val().reviews.length - 1)).toFixed(1)
+        );
+      }
     });
 
     return () => ref.off();
@@ -90,7 +113,7 @@ export default function Comments(props) {
                               className="greeting-title text-primary"
                               style={{ fontSize: "40px" }}
                             >
-                              4.2
+                              {avgReview}
                             </h1>
                           </div>
                         </div>
