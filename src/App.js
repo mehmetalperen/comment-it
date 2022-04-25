@@ -28,30 +28,27 @@ function App() {
   }, []);
 
   const retriveData = () => {
-    const websiteRef = firebase.database().ref("Websites");
+    const possibleID = url.replace(/[^a-z\d\s]+/gi, "");
+    const ref = firebase.database().ref(`Websites/${possibleID}`);
 
-    websiteRef.on("value", (snapshot) => {
-      for (let key in snapshot.val()) {
-        //big-o of n. need to optimize this.
-        if (snapshot.val()[key].websiteURL === url) {
-          setDataID(key);
-          setIsLoading(false);
-
-          break;
-        }
+    ref.once("value").then(function(snapshot) {
+      if (snapshot.exists()) {
+        setDataID(possibleID);
+        setIsLoading(false);
+      } else {
+        setRetriveDataRun(true);
       }
-      setRetriveDataRun(true);
     });
   };
 
   const pushWebsiteToDB = () => {
     const websiteRef = firebase.database().ref("Websites");
-    const newSite = websiteRef.push();
-    newSite.set({
+    const newSiteID = url.replace(/[^a-z\d\s]+/gi, "");
+    websiteRef.child(newSiteID).set({
       websiteURL: url,
       reviews: [""],
     });
-    setDataID(newSite.key);
+    setDataID(newSiteID);
     setIsLoading(false);
   };
 
