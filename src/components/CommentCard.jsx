@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserProfileCard from "./UserProfileCard";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
 export default function CommentCard(props) {
-  const { username, starReview, comment } = props.comment;
+  const { user, starReview, comment } = props.reviewObj;
+  const [username, setUsername] = useState("");
+  const [commentText, setCommentText] = useState("");
+  const [star, setStar] = useState(0);
 
-  const fullStar = Math.floor(starReview);
-  const halfStar = Math.round(starReview) - fullStar;
+  useEffect(() => {
+    if (user && user.displayName) setUsername(user.displayName);
+    if (comment) setCommentText(comment);
+    if (starReview) setStar(starReview);
+  }, []);
+
+  const fullStar = Math.floor(star);
+  const halfStar = Math.round(star) - fullStar;
   const emtyStar = 5 - (fullStar + halfStar);
 
+  console.log(props.comment);
   return (
     <>
       <div className="row d-flex mb-5">
@@ -30,7 +40,7 @@ export default function CommentCard(props) {
             </p>
           </div>
         </div>
-        <div className="comment-content">{comment}</div>
+        <div className="comment-content">{commentText}</div>
       </div>
     </>
   );

@@ -35,7 +35,6 @@ export default function() {
   };
 
   const handleSignInWithGoogle = async () => {
-    console.log("google btn clicked");
     try {
       await signInWithGoogle();
       navigate("/comments");
@@ -68,6 +67,7 @@ export default function() {
                       id="username"
                       placeholder="Username"
                       ref={usernameRef}
+                      required
                     />
                     <label htmlFor="username">Username</label>
                   </div>
@@ -78,6 +78,7 @@ export default function() {
                       id="email"
                       placeholder="name@example.com"
                       ref={emailRef}
+                      required
                     />
                     <label htmlFor="email">Email address</label>
                   </div>
@@ -89,6 +90,7 @@ export default function() {
                       id="password"
                       placeholder="Password"
                       ref={passwordRef}
+                      required
                     />
                     <label htmlFor="password">Password</label>
                   </div>
@@ -100,6 +102,7 @@ export default function() {
                       id="passwordConfirmation"
                       placeholder="Confirm Password"
                       ref={passwordConfirmationRef}
+                      required
                     />
                     <label htmlFor="passwordConfirmation">
                       Confirm Password

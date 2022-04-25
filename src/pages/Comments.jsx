@@ -1,29 +1,76 @@
 import React, { useEffect, useState } from "react";
 import AddReview from "../components/AddReview";
 import CommentCard from "../components/CommentCard";
-import dummyComments from "../dummy/comments";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../contexts/AuthContext";
+import firebase from "../firebase";
 
-export default function Comments() {
-  const [isEmpty, setIsEmpty] = useState(false);
+/*
+NEXT: 
+make the algo for search faster
+delete, and edit existing commment/review */
+
+export default function Comments(props) {
+  // const [reviews, setReviews] = useState([]);//delete
+  const [isEmpty, setIsEmpty] = useState(false); //modify this
   const [totReview, setTotReview] = useState(0);
   const [totComment, setTotComment] = useState(0);
   const { currentUser } = useAuth();
+  const [pageData, setPageData] = useState(0);
+  const [avgReview, setAvgReview] = useState(0);
 
   useEffect(() => {
-    setTotReview(dummyComments.length);
-    const comments = dummyComments.filter((comment) => comment.comment !== "");
-    setTotComment(comments.length);
-    setIsEmpty(dummyComments.length > 0 ? false : true);
-    console.log(currentUser);
+    const ref = firebase.database().ref(`Websites/${props.dataID}`);
+    ref.on("value", (snapshot) => {
+      setPageData(snapshot.val());
+      setIsEmpty(snapshot.val().reviews.length === 1 ? true : false);
+      if (snapshot.val().reviews.length === 1) {
+        setTotReview(0);
+        setTotComment(0);
+      } else {
+        setTotReview(
+          snapshot.val().reviews.length - 1 /*There is always one empty review*/
+        );
+        let countComments = 0;
+        let reviewSum = 0;
+        snapshot.val().reviews.forEach((element) => {
+          if (element.comment && element.comment !== "") {
+            countComments++;
+          }
+          if (element.starReview) {
+            reviewSum += parseFloat(element.starReview);
+          }
+        });
+        setTotComment(countComments);
+        setAvgReview(
+          (reviewSum / (snapshot.val().reviews.length - 1)).toFixed(1)
+        );
+      }
+    });
+
+    return () => ref.off();
   }, []);
 
-  const handleReviewSubmit = (review) => {
-    const { starReview, comment } = review;
-    console.log("review submitted!");
-    console.log(`star: ${starReview} \n comment: ${comment}`);
+  const handleReviewSubmit = (userReview) => {
+    if (!pageData) return;
+    const { starReview, comment } = userReview;
+
+    const pageDataCopy = { ...pageData };
+    pageDataCopy.reviews.push({
+      starReview,
+      comment,
+      user: {
+        displayName: currentUser.displayName,
+        email: currentUser.email,
+        uid: currentUser.uid,
+      },
+    });
+    firebase
+      .database()
+      .ref(`Websites/${props.dataID}`)
+      .set(pageDataCopy);
   };
+
   return (
     <>
       <div className="container my-5">
@@ -71,7 +118,7 @@ export default function Comments() {
                               className="greeting-title text-primary"
                               style={{ fontSize: "40px" }}
                             >
-                              4.2
+                              {avgReview}
                             </h1>
                           </div>
                         </div>
@@ -80,10 +127,15 @@ export default function Comments() {
                   </>
                 )}
                 <AddReview handleReviewSubmit={handleReviewSubmit} />
-                {dummyComments.map((comment) => {
-                  const id = uuidv4();
-                  return <CommentCard key={id} comment={comment} />;
-                })}
+                {pageData.reviews
+                  ? pageData.reviews.map((reviewObj, index) => {
+                      const id = uuidv4();
+                      if (index !== 0) {
+                        //bc of firebase, the first review is always empty, so we don't wanna render it.
+                        return <CommentCard key={id} reviewObj={reviewObj} />;
+                      }
+                    })
+                  : null}
               </div>
             </div>
           </div>
