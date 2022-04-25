@@ -7,6 +7,7 @@ import firebase from "../firebase";
 
 /*
 NEXT: 
+make the algo for search faster
 delete, and edit existing commment/review */
 
 export default function Comments(props) {
