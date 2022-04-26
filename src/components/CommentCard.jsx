@@ -3,12 +3,15 @@ import UserProfileCard from "./UserProfileCard";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
+import { Collapse } from "react-bootstrap";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 export default function CommentCard(props) {
   const { user, starReview, comment } = props.reviewObj;
   const [username, setUsername] = useState("");
   const [commentText, setCommentText] = useState("");
   const [star, setStar] = useState(0);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   useEffect(() => {
     if (user && user.displayName) setUsername(user.displayName);
     if (comment) setCommentText(comment);
@@ -24,7 +27,7 @@ export default function CommentCard(props) {
     <>
       <div className="row d-flex mb-5">
         <hr />
-        <div className="col-4 ">
+        <div className="col-4">
           <UserProfileCard username={username} />
           <div className="start-review-wrapper m-2">
             <p>
@@ -39,6 +42,12 @@ export default function CommentCard(props) {
               ))}
             </p>
           </div>
+        </div>
+        <div className="col-1 offset-6">
+          <DropdownButton id="dropdown-basic-button" title=":">
+            <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
+          </DropdownButton>
         </div>
         <div className="comment-content">{commentText}</div>
       </div>

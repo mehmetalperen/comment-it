@@ -180,3 +180,22 @@ label {
   display: flex;
   width: 350px;
 }
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-toggle.btn.btn-primary {
+  background-color: #7d7f8e;
+  border-color: #7d7f8e;
+  box-shadow: #7d7f8e;
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.dropdown-toggle.btn.btn-primary:hover {
+  background-color: #b4b5b9;
+  color: rgba(14, 21, 58, 0.76);
+}
