@@ -3,19 +3,24 @@ import UserProfileCard from "./UserProfileCard";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
-import { Collapse } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useAuth } from "../contexts/AuthContext";
+
 export default function CommentCard(props) {
   const { user, starReview, comment } = props.reviewObj;
   const [username, setUsername] = useState("");
   const [commentText, setCommentText] = useState("");
   const [star, setStar] = useState(0);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const { currentUser } = useAuth();
+  const [isOwerner, setIsOwner] = useState(false);
+
   useEffect(() => {
+    console.log(currentUser);
     if (user && user.displayName) setUsername(user.displayName);
     if (comment) setCommentText(comment);
     if (starReview) setStar(starReview);
+    if (currentUser && user && currentUser.uid === user.uid) setIsOwner(true);
   }, []);
 
   const fullStar = Math.floor(star);
@@ -43,12 +48,15 @@ export default function CommentCard(props) {
             </p>
           </div>
         </div>
-        <div className="col-1 offset-6">
-          <DropdownButton id="dropdown-basic-button" title=":">
-            <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
-          </DropdownButton>
-        </div>
+        {isOwerner ? (
+          <div className="col-1 offset-6">
+            <DropdownButton id="dropdown-basic-button" title=":">
+              <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
+            </DropdownButton>
+          </div>
+        ) : null}
+
         <div className="comment-content">{commentText}</div>
       </div>
     </>
