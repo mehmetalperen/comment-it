@@ -4,7 +4,7 @@ import CommentCard from "../components/CommentCard";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
-
+import EditReview from "../components/EditReview";
 /*
 NEXT: 
 delete, and edit existing commment/review */
@@ -17,6 +17,8 @@ export default function Comments(props) {
   const { currentUser } = useAuth();
   const [pageData, setPageData] = useState(0);
   const [avgReview, setAvgReview] = useState(0);
+  const [IsEditReview, setIsEditReview] = useState(false);
+  const [editReviewID, setEditReviewID] = useState(0);
 
   useEffect(() => {
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
@@ -71,7 +73,8 @@ export default function Comments(props) {
   };
 
   const editReview = (reviewID) => {
-    console.log(`reviewID:${reviewID}`);
+    setIsEditReview(true);
+    setEditReviewID(reviewID);
   };
 
   const deleteReview = (reviewID) => {
@@ -150,6 +153,13 @@ export default function Comments(props) {
                       const id = uuidv4();
                       if (index !== 0) {
                         //bc of firebase, the first review is always empty, so we don't wanna render it.
+                        if (IsEditReview && editReviewID === index) {
+                          return (
+                            <EditReview
+                              handleReviewSubmit={handleReviewSubmit}
+                            />
+                          );
+                        }
                         return (
                           <CommentCard
                             key={id}

@@ -200,3 +200,45 @@ label {
   box-shadow: #7d7f8e;
   color: white;
 }
+
+/*/////////////////////////////////////*/
+
+.rating-edit {
+  border: none;
+  margin-right: 49px;
+}
+
+.rating-edit > [id^="editstar"] {
+  display: none;
+}
+
+.rating-edit > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating-edit > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating-edit > label {
+  color: #c4c8e4;
+  float: right;
+}
+
+.rating-edit > [id^="editstar"]:checked ~ label,
+.rating-edit:not(:checked) > label:hover,
+.rating-edit:not(:checked) > label:hover ~ label {
+  color: #3d5af1;
+}
+
+.rating-edit > [id^="editstar"]:checked + label:hover,
+.rating-edit > [id^="editstar"]:checked ~ label:hover,
+.rating-edit > label:hover ~ [id^="editstar"]:checked ~ label,
+.rating-edit > [id^="editstar"]:checked ~ label:hover ~ label {
+  color: #3d5af1;
+}
