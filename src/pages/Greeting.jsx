@@ -32,7 +32,7 @@ export default function Greeting() {
                     className="btn btn-primary btn-login fw-bold text-uppercase"
                     to="/singup"
                   >
-                    Sing Up
+                    Sign Up
                   </Link>
                 </div>
                 <div className="d-grid mb-2 mx-2 w-50">
@@ -40,7 +40,7 @@ export default function Greeting() {
                     to="/singin"
                     className="btn btn-secondary btn-login fw-bold text-uppercase"
                   >
-                    Sing In
+                    Sign In
                   </Link>
                 </div>
               </div>
