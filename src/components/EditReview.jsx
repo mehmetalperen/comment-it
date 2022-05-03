@@ -4,7 +4,7 @@ import UserProfileCard from "./UserProfileCard";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function EditReview(props) {
-  const [showComment, setShowComment] = useState(false);
+  const [showComment, setShowComment] = useState(true);
   const [starReview, setStarReview] = useState(0);
   const [comment, setComment] = useState("");
   const { currentUser } = useAuth();
