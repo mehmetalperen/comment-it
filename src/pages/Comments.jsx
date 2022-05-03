@@ -91,7 +91,35 @@ export default function Comments(props) {
       .set(pageDataCopy);
     console.log("deleted");
   };
+  const closeReviewEdit = () => {
+    setIsEditReview(false);
+  };
 
+  const handleReviewEditSubmit = (edittedReview, reviewID) => {
+    let pageDataCopy = { ...pageData };
+    const { starReview, comment } = edittedReview;
+    pageDataCopy.reviews = [];
+    pageData.reviews.forEach((el, index) => {
+      if (reviewID !== index) {
+        pageDataCopy.reviews.push(el);
+      } else {
+        pageDataCopy.reviews.push({
+          starReview,
+          comment,
+          user: {
+            displayName: currentUser.displayName,
+            email: currentUser.email,
+            uid: currentUser.uid,
+          },
+        });
+      }
+    });
+
+    firebase
+      .database()
+      .ref(`Websites/${props.dataID}`)
+      .set(pageDataCopy);
+  };
   return (
     <>
       <div className="container my-5">
@@ -156,7 +184,11 @@ export default function Comments(props) {
                         if (IsEditReview && editReviewID === index) {
                           return (
                             <EditReview
-                              handleReviewSubmit={handleReviewSubmit}
+                              key={id}
+                              handleReviewEditSubmit={handleReviewEditSubmit}
+                              closeReviewEdit={closeReviewEdit}
+                              reviewObj={reviewObj}
+                              index={index}
                             />
                           );
                         }

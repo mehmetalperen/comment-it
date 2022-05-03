@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Collapse } from "react-bootstrap";
 import UserProfileCard from "./UserProfileCard";
 import { useAuth } from "../contexts/AuthContext";
@@ -10,8 +10,14 @@ export default function EditReview(props) {
   const { currentUser } = useAuth();
   const [username, setUsername] = useState(currentUser.displayName);
 
+  useEffect(() => {
+    if (props.reviewObj.comment) setComment(props.reviewObj.comment);
+    if (props.reviewObj.starReview) setStarReview(props.reviewObj.starReview);
+  }, []);
+
   const toggleHideComment = (bool = true) => {
     setShowComment(bool);
+    if (!bool) props.closeReviewEdit();
   };
 
   const handleStarReview = (e) => {
@@ -25,7 +31,10 @@ export default function EditReview(props) {
   };
 
   const handleSubmit = () => {
-    props.handleReviewSubmit({ starReview: starReview, comment: comment });
+    props.handleReviewEditSubmit(
+      { starReview: starReview, comment: comment },
+      props.index
+    );
     resetReview();
   };
   return (
@@ -76,7 +85,7 @@ export default function EditReview(props) {
                       ></label>{" "}
                       <input
                         type="radio"
-                        id="editstar4-edit"
+                        id="editstar4"
                         name="rating-edit"
                         value="4"
                         onClick={(e) => {
