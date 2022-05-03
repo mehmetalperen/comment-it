@@ -9,6 +9,15 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Comments from "./pages/Comments";
 import firebase from "./firebase";
 
+/*
+TODO's:
+1) no fake emails
+2) user can make only one comment. if there's alreayd a comment made by the current user, 'add review' yerine put 'edit review'
+3) publish
+------------
+++ check if username is appoprotate. probly from an AI API
+ */
+
 function App() {
   const [url, setUrl] = useState(""); //DON'T FORGET TO CHANGE THIS T0 ''
   const [isLoading, setIsLoading] = useState(true);
