@@ -46,7 +46,7 @@ function App() {
     const newSiteID = url.replace(/[^a-z\d\s]+/gi, "");
     websiteRef.child(newSiteID).set({
       websiteURL: url,
-      reviews: [""],
+      reviews: [""], //firebase doens't let us create empty arrays, so there will always be an empty el in the array (the first element)
     });
     setDataID(newSiteID);
     setIsLoading(false);

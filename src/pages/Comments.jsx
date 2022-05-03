@@ -17,7 +17,7 @@ export default function Comments(props) {
   const { currentUser } = useAuth();
   const [pageData, setPageData] = useState(0);
   const [avgReview, setAvgReview] = useState(0);
-  const [IsEditReview, setIsEditReview] = useState(false);
+  const [isEditReview, setIsEditReview] = useState(false);
   const [editReviewID, setEditReviewID] = useState(0);
 
   useEffect(() => {
@@ -30,7 +30,8 @@ export default function Comments(props) {
         setTotComment(0);
       } else {
         setTotReview(
-          snapshot.val().reviews.length - 1 /*There is always one empty review*/
+          snapshot.val().reviews.length -
+            1 /*There is always one empty review. firebase doens't let us create empty arrays, so there will always be an empty el in the array (the first element)*/
         );
         let countComments = 0;
         let reviewSum = 0;
@@ -181,7 +182,7 @@ export default function Comments(props) {
                       const id = uuidv4();
                       if (index !== 0) {
                         //bc of firebase, the first review is always empty, so we don't wanna render it.
-                        if (IsEditReview && editReviewID === index) {
+                        if (isEditReview && editReviewID === index) {
                           return (
                             <EditReview
                               key={id}
