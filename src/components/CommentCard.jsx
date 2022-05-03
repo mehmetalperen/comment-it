@@ -16,7 +16,6 @@ export default function CommentCard(props) {
   const [isOwerner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    console.log(currentUser);
     if (user && user.displayName) setUsername(user.displayName);
     if (comment) setCommentText(comment);
     if (starReview) setStar(starReview);
@@ -27,7 +26,13 @@ export default function CommentCard(props) {
   const halfStar = Math.round(star) - fullStar;
   const emtyStar = 5 - (fullStar + halfStar);
 
-  console.log(props.comment);
+  const handleEdit = () => {
+    props.editReview(props.index);
+  };
+
+  const handleDelete = () => {
+    props.deleteReview(props.index);
+  };
   return (
     <>
       <div className="row d-flex mb-5">
@@ -51,8 +56,8 @@ export default function CommentCard(props) {
         {isOwerner ? (
           <div className="col-1 offset-6">
             <DropdownButton id="dropdown-basic-button" title=":">
-              <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
+              <Dropdown.Item onClick={handleEdit}>Edit</Dropdown.Item>
+              <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
             </DropdownButton>
           </div>
         ) : null}

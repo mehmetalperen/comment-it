@@ -70,6 +70,25 @@ export default function Comments(props) {
       .set(pageDataCopy);
   };
 
+  const editReview = (reviewID) => {
+    console.log(`reviewID:${reviewID}`);
+  };
+
+  const deleteReview = (reviewID) => {
+    let pageDataCopy = { ...pageData };
+    pageDataCopy.reviews = [];
+    pageData.reviews.forEach((el, index) => {
+      if (reviewID !== index) {
+        pageDataCopy.reviews.push(el);
+      }
+    });
+    firebase
+      .database()
+      .ref(`Websites/${props.dataID}`)
+      .set(pageDataCopy);
+    console.log("deleted");
+  };
+
   return (
     <>
       <div className="container my-5">
@@ -131,7 +150,15 @@ export default function Comments(props) {
                       const id = uuidv4();
                       if (index !== 0) {
                         //bc of firebase, the first review is always empty, so we don't wanna render it.
-                        return <CommentCard key={id} reviewObj={reviewObj} />;
+                        return (
+                          <CommentCard
+                            key={id}
+                            index={index}
+                            reviewObj={reviewObj}
+                            deleteReview={deleteReview}
+                            editReview={editReview}
+                          />
+                        );
                       }
                     })
                   : null}

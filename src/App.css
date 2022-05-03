@@ -186,9 +186,8 @@ label {
 }
 
 .dropdown-toggle.btn.btn-primary {
-  background-color: #7d7f8e;
-  border-color: #7d7f8e;
-  box-shadow: #7d7f8e;
+  background-color: #b4b5b9;
+  color: rgba(14, 21, 58, 0.76);
 }
 
 .btn:focus {
@@ -196,6 +195,8 @@ label {
   box-shadow: none !important;
 }
 .dropdown-toggle.btn.btn-primary:hover {
-  background-color: #b4b5b9;
-  color: rgba(14, 21, 58, 0.76);
+  background-color: #7d7f8e;
+  border-color: #7d7f8e;
+  box-shadow: #7d7f8e;
+  color: white;
 }
