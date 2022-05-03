@@ -165,6 +165,9 @@ label {
 .rating > [id^="star"]:checked ~ label:hover ~ label {
   color: #3d5af1;
 }
+.fill {
+  color: #3d5af1;
+}
 
 .reset-option {
   display: none;
@@ -186,22 +189,16 @@ label {
 }
 
 .dropdown-toggle.btn.btn-primary {
-  background-color: #b4b5b9;
+  background-color: #ffffff;
   color: rgba(14, 21, 58, 0.76);
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
 }
-.dropdown-toggle.btn.btn-primary:hover {
-  background-color: #7d7f8e;
-  border-color: #7d7f8e;
-  box-shadow: #7d7f8e;
-  color: white;
-}
-
-/*/////////////////////////////////////*/
 
 .rating-edit {
   border: none;

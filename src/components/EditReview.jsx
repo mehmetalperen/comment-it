@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Collapse } from "react-bootstrap";
 import UserProfileCard from "./UserProfileCard";
 import { useAuth } from "../contexts/AuthContext";
+import ReactStars from "react-stars";
 
 export default function EditReview(props) {
   const [showComment, setShowComment] = useState(true);
@@ -20,8 +21,8 @@ export default function EditReview(props) {
     if (!bool) props.closeReviewEdit();
   };
 
-  const handleStarReview = (e) => {
-    setStarReview(e.target.value);
+  const handleStarReview = (starReview) => {
+    setStarReview(starReview);
   };
 
   const resetReview = () => {
@@ -52,168 +53,15 @@ export default function EditReview(props) {
               <div className="col-md-6">
                 <div className="start-card">
                   <div className="start-card-body text-center">
-                    <fieldset className="rating-edit">
-                      <input
-                        type="radio"
-                        id="editstar5"
-                        name="rating-edit"
-                        value="5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="full"
-                        htmlFor="editstar5"
-                        title="Awesome - 5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar4half"
-                        name="rating-edit"
-                        value="4.5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="half"
-                        htmlFor="editstar4half"
-                        title="Pretty good - 4.5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar4"
-                        name="rating-edit"
-                        value="4"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="full"
-                        htmlFor="editstar4"
-                        title="Pretty good - 4 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar3half"
-                        name="rating-edit"
-                        value="3.5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="half"
-                        htmlFor="editstar3half"
-                        title="Meh - 3.5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar3"
-                        name="rating-edit"
-                        value="3"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="full"
-                        htmlFor="editstar3"
-                        title="Meh - 3 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar2half"
-                        name="rating-edit"
-                        value="2.5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="half"
-                        htmlFor="editstar2half"
-                        title="Kinda bad - 2.5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar2"
-                        name="rating-edit"
-                        value="2"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="full"
-                        htmlFor="editstar2"
-                        title="Kinda bad - 2 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar1half"
-                        name="rating-edit"
-                        value="1.5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="half"
-                        htmlFor="editstar1half"
-                        title="Meh - 1.5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstar1"
-                        name="rating-edit"
-                        value="1"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="full"
-                        htmlFor="editstar1"
-                        title="Sucks big time - 1 star"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        id="editstarhalf"
-                        name="rating-edit"
-                        value="0.5"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />
-                      <label
-                        className="half"
-                        htmlFor="editstarhalf"
-                        title="Sucks big time - 0.5 stars"
-                      ></label>{" "}
-                      <input
-                        type="radio"
-                        className="reset-option"
-                        name="rating-edit"
-                        value="reset"
-                        onClick={(e) => {
-                          toggleHideComment(true);
-                          handleStarReview(e);
-                        }}
-                      />{" "}
-                    </fieldset>
+                    <ReactStars
+                      count={5}
+                      value={starReview}
+                      onChange={handleStarReview}
+                      size={50}
+                      color2={"#3d5af1"}
+                      color1={"#c4c8e4"}
+                      className="rating"
+                    />
                   </div>
                 </div>
               </div>

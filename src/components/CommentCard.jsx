@@ -55,7 +55,7 @@ export default function CommentCard(props) {
         </div>
         {isOwerner ? (
           <div className="col-1 offset-6">
-            <DropdownButton id="dropdown-basic-button" title=":">
+            <DropdownButton id="dropdown-basic-button" title="&#8942;">
               <Dropdown.Item onClick={handleEdit}>Edit</Dropdown.Item>
               <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
             </DropdownButton>
