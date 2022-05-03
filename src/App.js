@@ -10,7 +10,7 @@ import Comments from "./pages/Comments";
 import firebase from "./firebase";
 
 function App() {
-  const [url, setUrl] = useState("http://localhost:3000/"); //DON'T FORGET TO CHANGE THIS T0 ''
+  const [url, setUrl] = useState(""); //DON'T FORGET TO CHANGE THIS T0 ''
   const [isLoading, setIsLoading] = useState(true);
   const [database, setDatabase] = useState();
   const [dataID, setDataID] = useState("");

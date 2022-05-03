@@ -13,5 +13,5 @@
     "128": "logo192.png"
   },
   "permissions": ["activeTab", "identity"],
-  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://apis.google.com https://www.gstatic.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://apis.google.com https://www.gstatic.com; object-src 'self' https://apis.google.com"
 }

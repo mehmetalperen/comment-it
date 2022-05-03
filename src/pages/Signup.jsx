@@ -27,7 +27,7 @@ export default function() {
         passwordRef.current.value,
         usernameRef.current.value
       );
-      navigate("/singin");
+      navigate("/comments");
     } catch (err) {
       setError("Failled to create an account.");
     }
