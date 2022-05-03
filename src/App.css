@@ -11,9 +11,6 @@ html {
 .App {
   width: 800px;
   height: 600px;
-  border-style: solid;
-  border-color: red;
-  border-width: 1px;
   background-color: #e2f3f5;
   display: flex;
   overflow-x: hidden;
