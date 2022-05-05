@@ -8,18 +8,21 @@ import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import Comments from "./pages/Comments";
 import firebase from "./firebase";
-
+import helpers from "./helpers/helpers";
 /*
+//FIX:
+!!!!!!you-tube and youtube will be same. fix this by hashing!!!!!!
 TODO's:
 1) no fake emails
 2) user can make only one comment. if there's alreayd a comment made by the current user, 'add review' yerine put 'edit review'
-3) publish
+3) clean up code
+4) publish
 ------------
 ++ check if username is appoprotate. probly from an AI API
  */
 
 function App() {
-  const [url, setUrl] = useState(""); //DON'T FORGET TO CHANGE THIS T0 ''
+  const [url, setUrl] = useState("http://localhost:3000/"); //DON'T FORGET TO CHANGE THIS T0 ''
   const [isLoading, setIsLoading] = useState(true);
   const [database, setDatabase] = useState();
   const [dataID, setDataID] = useState("");
@@ -39,7 +42,9 @@ function App() {
   const retriveData = () => {
     //FIX:
     /* you-tube and youtube will be same. fix this by hashing */
-    const possibleID = url.replace(/[^a-z\d\s]+/gi, "");
+
+    const possibleID = helpers.useHashUrlHelper(url);
+
     const ref = firebase.database().ref(`Websites/${possibleID}`);
 
     ref.once("value").then(function(snapshot) {
@@ -54,7 +59,7 @@ function App() {
 
   const pushWebsiteToDB = () => {
     const websiteRef = firebase.database().ref("Websites");
-    const newSiteID = url.replace(/[^a-z\d\s]+/gi, "");
+    const newSiteID = helpers.useHashUrlHelper(url);
     websiteRef.child(newSiteID).set({
       websiteURL: url,
       reviews: [""], //firebase doens't let us create empty arrays, so there will always be an empty el in the array (the first element)
