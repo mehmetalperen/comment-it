@@ -37,6 +37,8 @@ function App() {
   }, []);
 
   const retriveData = () => {
+    //FIX:
+    /* you-tube and youtube will be same. fix this by hashing */
     const possibleID = url.replace(/[^a-z\d\s]+/gi, "");
     const ref = firebase.database().ref(`Websites/${possibleID}`);
 
