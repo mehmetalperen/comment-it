@@ -11,19 +11,17 @@ import firebase from "./firebase";
 import helpers from "./helpers/helpers";
 /*
 TODO's:
-1) no fake emails
+
 2) user can make only one comment. if there's alreayd a comment made by the current user, 'add review' yerine put 'edit review'
 3) clean up code: 
   *helpers
   *hooks
   *context for the siteID
 4) publish
-------------
-++ check if username is appoprotate. probly from an AI API
  */
 
 function App() {
-  const [url, setUrl] = useState("http://localhost:3000/"); //DON'T FORGET TO CHANGE THIS T0 ''
+  const [url, setUrl] = useState(""); //DON'T FORGET TO CHANGE THIS T0 ''
   const [isLoading, setIsLoading] = useState(true);
   const [database, setDatabase] = useState();
   const [dataID, setDataID] = useState("");
