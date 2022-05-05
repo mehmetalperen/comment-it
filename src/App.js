@@ -10,12 +10,13 @@ import Comments from "./pages/Comments";
 import firebase from "./firebase";
 import helpers from "./helpers/helpers";
 /*
-//FIX:
-!!!!!!you-tube and youtube will be same. fix this by hashing!!!!!!
 TODO's:
 1) no fake emails
 2) user can make only one comment. if there's alreayd a comment made by the current user, 'add review' yerine put 'edit review'
-3) clean up code
+3) clean up code: 
+  *helpers
+  *hooks
+  *context for the siteID
 4) publish
 ------------
 ++ check if username is appoprotate. probly from an AI API
@@ -85,8 +86,8 @@ function App() {
         <div className="App py-5">
           <Routes>
             <Route path={`/`} exact element={<Greeting />} />
-            <Route path={`/singup`} element={<Signup />} />
-            <Route path={`/singin`} element={<Login />} />
+            {/* <Route path={`/singup`} element={<Signup />} />
+            <Route path={`/singin`} element={<Login />} /> */}
             <Route
               path={`comments`}
               element={

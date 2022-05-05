@@ -1,6 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 export default function Greeting() {
+  const navigate = useNavigate();
+  const { signInWithGoogle } = useAuth();
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/comments");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -26,23 +40,18 @@ export default function Greeting() {
                   website you are currently on.
                 </li>
               </ul>
-              <div className="d-flex w-100">
-                <div className="d-grid mb-2 mx-2 w-50">
-                  <Link
-                    className="btn btn-primary btn-login fw-bold text-uppercase"
-                    to="/singup"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
-                <div className="d-grid mb-2 mx-2 w-50">
-                  <Link
-                    to="/singin"
-                    className="btn btn-secondary btn-login fw-bold text-uppercase"
-                  >
-                    Sign In
-                  </Link>
-                </div>
+              <div className="d-grid mb-2">
+                <button
+                  className="btn btn-lg btn-login fw-bold text-uppercase"
+                  onClick={handleSignInWithGoogle}
+                >
+                  <img
+                    src="google-logo-color.png"
+                    className="google-logo"
+                    alt=""
+                  />{" "}
+                  Sign in with Google
+                </button>
               </div>
             </div>
           </div>
