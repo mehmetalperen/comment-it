@@ -12,18 +12,18 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const signup = (email, password, username) => {
-    return auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        return result.user.updateProfile({
-          displayName: username,
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+  // const signup = (email, password, username) => {
+  //   return auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       return result.user.updateProfile({
+  //         displayName: username,
+  //       });
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // };
 
   const signInWithGoogle = () => {
     let googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -33,9 +33,9 @@ export function AuthProvider({ children }) {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
+  // const login = (email, password) => {
+  //   return auth.signInWithEmailAndPassword(email, password);
+  // };
   useEffect(() => {
     const unsubsribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -46,8 +46,8 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    login,
-    signup,
+    //login,
+    //signup,
     signInWithGoogle,
   };
 
