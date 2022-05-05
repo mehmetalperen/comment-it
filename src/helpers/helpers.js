@@ -1,5 +1,5 @@
 const helpers = {
-  useHashUrlHelper: function(url) {
+  useHashUrlHelper: (url) => {
     var hash = 0;
     // if the length of the string is 0, return 0
     if (url.length == 0) return hash;
