@@ -6,7 +6,7 @@ import Signup from "./pages/Signup";
 import Greeting from "./pages/Greeting";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import Comments from "./pages/Comments";
+import SiteContent from "./pages/SiteContent";
 import firebase from "./firebase";
 import helpers from "./helpers/helpers";
 /*
@@ -21,7 +21,7 @@ TODO's:
  */
 
 function App() {
-  const [url, setUrl] = useState(""); //DON'T FORGET TO CHANGE THIS T0 ''
+  const [url, setUrl] = useState("http://localhost:3000/"); //DON'T FORGET TO CHANGE THIS T0 ''
   const [isLoading, setIsLoading] = useState(true);
   const [database, setDatabase] = useState();
   const [dataID, setDataID] = useState("");
@@ -89,7 +89,7 @@ function App() {
             <Route
               path={`comments`}
               element={
-                isLoading ? <h1>Loading</h1> : <Comments dataID={dataID} />
+                isLoading ? <h1>Loading</h1> : <SiteContent dataID={dataID} />
               }
             />
           </Routes>
