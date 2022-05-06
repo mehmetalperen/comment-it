@@ -27,7 +27,7 @@ export default function CommentCard(props) {
   const emtyStar = 5 - (fullStar + halfStar);
 
   const handleEdit = () => {
-    props.editReview(props.index);
+    props.editReview();
   };
 
   const handleDelete = () => {

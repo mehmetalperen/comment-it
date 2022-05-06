@@ -18,8 +18,9 @@ export default function Comments(props) {
   const [pageData, setPageData] = useState(0);
   const [avgReview, setAvgReview] = useState(0);
   const [isEditReview, setIsEditReview] = useState(false);
-  const [editReviewID, setEditReviewID] = useState(0);
   const [userHasReviewed, setUserHasReviewed] = useState(false);
+  const [currUserReview, setCurrUserReview] = useState({});
+  const [currUserReviewID, setCurrUserReviewID] = useState(0);
 
   useEffect(() => {
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
@@ -36,9 +37,11 @@ export default function Comments(props) {
         );
         let countComments = 0;
         let reviewSum = 0;
-        snapshot.val().reviews.forEach((element) => {
+        snapshot.val().reviews.forEach((element, index) => {
           if (element.user && element.user.uid === currentUser.uid) {
             setUserHasReviewed(true);
+            setCurrUserReview(element);
+            setCurrUserReviewID(index);
           }
           if (element.comment && element.comment !== "") {
             countComments++;
@@ -77,9 +80,8 @@ export default function Comments(props) {
       .set(pageDataCopy);
   };
 
-  const editReview = (reviewID) => {
+  const editReview = () => {
     setIsEditReview(true);
-    setEditReviewID(reviewID);
   };
 
   const deleteReview = (reviewID) => {
@@ -117,6 +119,16 @@ export default function Comments(props) {
             uid: currentUser.uid,
           },
         });
+        setCurrUserReview({
+          starReview,
+          comment,
+          user: {
+            displayName: currentUser.displayName,
+            email: currentUser.email,
+            uid: currentUser.uid,
+          },
+        });
+        setCurrUserReviewID(index);
       }
     });
 
@@ -180,7 +192,25 @@ export default function Comments(props) {
                     </div>
                   </>
                 )}
-                {userHasReviewed ? null : (
+                {userHasReviewed ? (
+                  !isEditReview ? (
+                    <CommentCard
+                      key={currUserReviewID}
+                      index={currUserReviewID}
+                      reviewObj={currUserReview}
+                      deleteReview={deleteReview}
+                      editReview={editReview}
+                    />
+                  ) : (
+                    <EditReview
+                      key={currUserReviewID}
+                      handleReviewEditSubmit={handleReviewEditSubmit}
+                      closeReviewEdit={closeReviewEdit}
+                      reviewObj={currUserReview}
+                      index={currUserReviewID}
+                    />
+                  )
+                ) : (
                   <AddReview handleReviewSubmit={handleReviewSubmit} />
                 )}
                 {pageData.reviews
@@ -188,26 +218,17 @@ export default function Comments(props) {
                       const id = uuidv4();
                       if (index !== 0) {
                         //bc of firebase, the first review is always empty, so we don't wanna render it.
-                        if (isEditReview && editReviewID === index) {
+                        if (index !== currUserReviewID) {
                           return (
-                            <EditReview
+                            <CommentCard
                               key={id}
-                              handleReviewEditSubmit={handleReviewEditSubmit}
-                              closeReviewEdit={closeReviewEdit}
-                              reviewObj={reviewObj}
                               index={index}
+                              reviewObj={reviewObj}
+                              deleteReview={deleteReview}
+                              editReview={editReview}
                             />
                           );
                         }
-                        return (
-                          <CommentCard
-                            key={id}
-                            index={index}
-                            reviewObj={reviewObj}
-                            deleteReview={deleteReview}
-                            editReview={editReview}
-                          />
-                        );
                       }
                     })
                   : null}
