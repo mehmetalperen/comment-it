@@ -19,6 +19,7 @@ export default function Comments(props) {
   const [avgReview, setAvgReview] = useState(0);
   const [isEditReview, setIsEditReview] = useState(false);
   const [editReviewID, setEditReviewID] = useState(0);
+  const [userHasReviewed, setUserHasReviewed] = useState(false);
 
   useEffect(() => {
     const ref = firebase.database().ref(`Websites/${props.dataID}`);
@@ -36,6 +37,9 @@ export default function Comments(props) {
         let countComments = 0;
         let reviewSum = 0;
         snapshot.val().reviews.forEach((element) => {
+          if (element.user && element.user.uid === currentUser.uid) {
+            setUserHasReviewed(true);
+          }
           if (element.comment && element.comment !== "") {
             countComments++;
           }
@@ -90,7 +94,7 @@ export default function Comments(props) {
       .database()
       .ref(`Websites/${props.dataID}`)
       .set(pageDataCopy);
-    console.log("deleted");
+    setUserHasReviewed(false);
   };
   const closeReviewEdit = () => {
     setIsEditReview(false);
@@ -176,7 +180,9 @@ export default function Comments(props) {
                     </div>
                   </>
                 )}
-                <AddReview handleReviewSubmit={handleReviewSubmit} />
+                {userHasReviewed ? null : (
+                  <AddReview handleReviewSubmit={handleReviewSubmit} />
+                )}
                 {pageData.reviews
                   ? pageData.reviews.map((reviewObj, index) => {
                       const id = uuidv4();
